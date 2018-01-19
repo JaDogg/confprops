@@ -6,8 +6,10 @@ try:
 except ImportError:
     import mock
 
+
 class TestCase(unittest.TestCase):
     def assert_dict_equal(self, d1, d2, msg=None):
+        self.assertTrue(bool(mock))
         # Python version that is larger than 2.6
         if not (sys.version_info[0] == 2 and sys.version_info[1] <= 6):
             self.assertDictEqual(d1, d2, msg)
