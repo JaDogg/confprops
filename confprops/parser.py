@@ -1,4 +1,9 @@
+# -*- coding: <encoding name> -*-
+from __future__ import absolute_import
+
 import re
+
+from confprops.properties import Property
 
 LINES = re.compile("\n|\r\n|\r")
 
@@ -28,10 +33,5 @@ def _parse_property_text_lines(data, lines):
 
 
 def _parse_property(data, line):
-    line_content = line.split("=", 1)
-
-    if len(line_content) == 1:
-        data[line_content[0]] = None
-    else:
-        key, value = line_content
-        data[key] = value
+    prop = Property(line)
+    data[prop.key] = prop.value
