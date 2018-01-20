@@ -18,7 +18,7 @@ class Property(object):
         if not self._raw_string:
             return
 
-        string = self._raw_string.strip()
+        string = str(self._raw_string).strip()
 
         if not string:
             return
