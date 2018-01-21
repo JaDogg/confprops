@@ -1,19 +1,11 @@
-# -*- coding: <encoding name> -*-
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-import ast
 from behave import *
 from hamcrest import *
 
+from confprops.parser import loads, parse_any
 from confprops.properties import *
-from confprops.parser import loads
-
-
-def parse_any(text):
-    try:
-        return ast.literal_eval(text)
-    except (ValueError, SyntaxError) as _:
-        return text.strip()
 
 
 @given("'{string}' to Property")
@@ -31,7 +23,12 @@ def step_when_property_is_created(context):
     context.property_object = Property(context.string)
 
 
-@then("it should parse input into key='{key}' and value='{value}'")
+@when("value is set to '{new_value}'")
+def step_when_value_is_set(context, new_value):
+    context.property_object.value = parse_any(new_value)
+
+
+@then("Property should contain key='{key}' and value='{value}'")
 def step_then_it_should_parse_into(context, key, value):
     assert_that(context.property_object.key, equal_to(parse_any(key)))
     assert_that(context.property_object.value, equal_to(parse_any(value)))

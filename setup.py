@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 confprops setup.py
 
@@ -17,17 +18,18 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     # https://packaging.python.org/specifications/core-metadata/#name
-    name='confprops',  # Required
+    name='confprops',
     # https://www.python.org/dev/peps/pep-0440/
-    version='0.1.0',  # Required
+    version='0.1.0',
     # https://packaging.python.org/specifications/core-metadata/#summary
     description='Java like properties for configuration',
     # https://packaging.python.org/specifications/core-metadata/#description-optional
-    long_description=long_description,  # Optional
+    long_description=long_description,
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
     url='https://github.com/pypa/sampleproject',
     author='Bhathiya Perera',
     author_email='bhathiya91@live.com',
+    python_requires='>=2.6, >=3.3',
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -44,5 +46,5 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     keywords='config java properties property file',
-    packages=find_packages(include='confprops'),  # Required
+    packages=find_packages(include='confprops')
 )

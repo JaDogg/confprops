@@ -1,10 +1,10 @@
 Feature: Property
   Property represents a single line in a properties file
 
-  Scenario Outline: Single line property can be extracted
+  Scenario Outline: Single line property can be parsed
     Given '<raw_string>' to Property
     When Property is created
-    Then it should parse input into key='<key>' and value='<value>'
+    Then Property should contain key='<key>' and value='<value>'
 
     Examples: Basic Examples
       | raw_string | key | value |
@@ -26,3 +26,18 @@ Feature: Property
       | "1=Hello"  | "1"   | Hello |
       | 1          | "1"   | None  |
       | [1]        | "[1]" | None  |
+
+  Scenario Outline: Property value can be updated
+    Given '<raw_string>' to Property
+    When Property is created
+    And value is set to '<new_value>'
+    Then Property should contain key='<key>' and value='<new_value>'
+
+    Examples: Values with different data types
+      | raw_string | key | new_value       |
+      | "a=b   "   | a   | x               |
+      | key=value  | key | ""              |
+      | " a  = b"  | a   | None            |
+      | " a  = b"  | a   | []              |
+      | " a  = b"  | a   | (1,)            |
+      | " a  = b"  | a   | (1, {"a": "b"}) |
