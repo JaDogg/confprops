@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import unittest
 
 from confprops.peggy.peggy import *
-from peggy_display import *
+from tests.peggy_display import *
 
 
 class InfixTree(PegParser):

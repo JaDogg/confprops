@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import os
 
-from confprops.peggy.util import escape
 from confprops.peggy.peggy import Label
+from confprops.peggy.util import escape
 
 try:
     from io import StringIO

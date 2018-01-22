@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 
 import json
-import sys
 import unittest
 
 from confprops.peggy.peggy import PegParserWithoutWhitespace, Not, ZeroOrMore
 
 
 # References : https://github.com/antlr/grammars-v4/blob/master/json/JSON.g4
-
 
 class JsonParser(PegParserWithoutWhitespace):
     def __init__(self, text):

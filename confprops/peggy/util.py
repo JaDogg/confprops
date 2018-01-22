@@ -1,12 +1,12 @@
-import sys
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import
+
+import ast
 from functools import wraps
 
 
 def unescape_(string):
-    if sys.version[0] == "2":
-        return string.decode("string_escape")
-    else:
-        return string.encode("utf-8").decode("unicode_escape")
+    return ast.literal_eval('"""' + string + '"""')
 
 
 def escape(string):
@@ -32,12 +32,6 @@ def flatten(items):
                 yield item_
         else:
             yield item
-
-
-def merge_dictionary(destination, source):
-    for key, value in source.items():
-        destination[key] = value
-    return destination
 
 
 class TupleUtilsMixin(object):
@@ -66,8 +60,8 @@ class TupleUtilsMixin(object):
         return atoms,
 
     @staticmethod
-    def remove_brackets(*atoms):
-        return atoms[1:-1],
+    def remove_surrounding(*atoms):
+        return atoms[1:-1]
 
     @staticmethod
     def debug(*atoms):
